@@ -4,7 +4,8 @@ import router from './router'
 import store from './store'
 import './assets/tailwind.css'
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
+Vue.component('v-input', () => import('./components/VKInput.vue'));
 
 new Vue({
   router,

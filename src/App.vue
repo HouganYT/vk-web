@@ -1,11 +1,10 @@
 <template lang='pug'>
-  #app
-    router-view
+  #app.h-full
+    router-view.h-full
 </template>
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
@@ -22,5 +21,9 @@
       color: #42b983;
     }
   }
+}
+
+body {
+  height: 100vh;
 }
 </style>
