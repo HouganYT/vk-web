@@ -49,6 +49,22 @@ export default {
       }
 
       notify(this.$t('send.ok'));
+
+
+      const obj = this.form.flat(Infinity).map(v => ([v.key, v.value]));
+
+      const file = new Blob([JSON.stringify(Object.fromEntries(obj))]);
+      
+      var a = document.createElement("a"),
+                url = URL.createObjectURL(file);
+        a.href = url;
+        a.download = 'form';
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function() {
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);  
+        }, 0); 
     }
   },
   mounted() {
