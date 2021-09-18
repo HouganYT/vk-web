@@ -1,18 +1,16 @@
 <template lang='pug'>
 .wrapper
-  .main
+  .main.px-4
     .flex.flex-col.items-center
-      select.mb-4
-        option Русский
-        option English
+      language-picker
 
       .font-bold.text-xl Название формы
 
-      .flex.w-full
-        .left.pr-2(class='w-1/2')
+      .flex.w-full.flex-wrap
+        .left(class='w-full md:w-1/2 md:pr-2')
           v-input(label='Ваше имя' placeholder='Владимир' required)
         
-        .right.pl-2(class='w-1/2')
+        .right(class='w-full md:w-1/2 md:pl-2')
           v-input(label='Ваша фамилия' placeholder='Хуган' required)
 
       v-input(label='E-Mail' placeholder='john.doe@example.com' required)
@@ -24,8 +22,13 @@
 </template>
 
 <script>
+import LanguagePicker from './../components/LanguagePicker.vue';
+
 export default {
-  name: 'Home'
+  name: 'Home',
+  components: {
+    LanguagePicker
+  }
 }
 </script>
 
