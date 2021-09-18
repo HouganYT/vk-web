@@ -1,12 +1,12 @@
 <template lang='pug'>
-.language-picker.mb-5
+.language-picker
   template(v-if='isMobile')
-    template(v-for='value in languages')
-      button.text-sm.px-2.py-1.mx-2.rounded-md(@click='choosed = value' :class='choosed == value ? "bg-green-500 text-white" : ""') {{ value }}
+    template(v-for='(value, key) in languages')
+      button.text-sm.px-2.py-1.mx-2.rounded-md(v-if='value.length > 2' @click='chooseLanguage(key)' :class='$root.$i18n.locale == key ? "bg-green-500 text-white" : ""') {{ value }}
   template(v-else)
-    select.mb-4.bg-gray-200.px-2.py-1.rounded-md
-      template(v-for='value in languages')
-        option {{ value }}
+    select.bg-gray-200.px-2.py-1.rounded-md(@change='(e) => chooseLanguage(e.target.value)')
+      template(v-for='(value, key) in languages')
+        option(v-if='value.length > 2') {{ value }}
 </template>
 
 <script>
@@ -20,11 +20,30 @@ export default {
     return {
       isMobile: window.innerWidth < 900,
 
-      choosed: 'Русский',
-      languages: [
-        'Русский',
-        'English'
-      ]
+      languages: {
+        'en': 'English',
+        'ru': 'Русский',
+        'ar': 'عرب',
+
+        'Русский': 'ru',
+        'English': 'en',
+        'عرب': 'ar'
+      }
+    }
+  },
+  methods: {
+    chooseLanguage(language) {
+      if (this.languages[language].length == 2) {
+        language = this.languages[language];
+      }
+
+      this.$root.$i18n.locale = language;
+
+      if (language === 'ar') {
+        document.querySelector('body').setAttribute('dir', 'rtl');
+      } else {
+        document.querySelector('body').removeAttribute('dir');
+      }
     }
   }
 }

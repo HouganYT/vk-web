@@ -1,0 +1,17 @@
+{
+  "form.header": "SkyDNS User Agreement",
+
+  "form.first-name": "First name",
+  "form.last-name": "Last name",
+
+  "form.company": "Company",
+  "form.country": "Country",
+
+  "form.email": "E-Mail",
+  "form.message": "Commentary",
+  "form.send": "Send",
+
+  "send.form": "You have filled out the form incorrectly",
+  "send.error": "Something went wrong...",
+  "send.ok": "Thank you for your message"
+}

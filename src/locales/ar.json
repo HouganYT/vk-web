@@ -1,0 +1,17 @@
+{
+  "form.header": "SkyDNS اتفاق",
+
+  "form.first-name": "اسم",
+  "form.last-name": "لقب",
+
+  "form.company": "شركة",
+  "form.country": "بلد",
+
+  "form.email": "E-Mail",
+  "form.message": "تعليق",
+  "form.send": "يرسل",
+
+  "send.form": "قد ملأت النموذج بشكل غير صحيح",
+  "send.error": "هناك خطأ ما",
+  "send.ok": "شكرا لرسالتك"
+}

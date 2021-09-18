@@ -1,10 +1,12 @@
 <template lang='pug'>
 .vk-input.w-full.py-1
-  .flex
-    .text-sm {{ label }}
-    .text-sm.pl-1.text-red-500(v-if='required') *  
+  .flex.flex-wrap.w-full.items-center
+    .left.flex.pr-2(:class='isMobile ? "w-full" : "justify-end"' style='width: 100px;')
+      .text-sm {{ label }}
+      .text-sm.pl-1.text-red-500(v-if='required') *  
 
-  v-component.px-2.py-1.w-full(@input='(e) => value = e.target.value' :placeholder='placeholder' :class='isErrored ? "errored" : ""' :is='area ? "textarea" : "input"')
+    .left.flex(:class='isMobile ? "w-full" : "auto"' style='')
+      v-component.px-2.py-1.w-full(@input='updateVars' :placeholder='placeholder' :class='isErrored ? "errored" : ""' :is='area ? "textarea" : "input"')
 </template>
 
 <script>
@@ -25,6 +27,9 @@ export default {
     validate: {
       type: RegExp
     },
+    sync: {
+      type: String
+    },
     area: {
       type: Boolean,
       default: false
@@ -43,14 +48,23 @@ export default {
       return !this.validate.test(this.value);
     }
   },
+  mounted() {
+    window.addEventListener('resize', () => {
+      this.isMobile = window.innerWidth < 900
+    });
+  },
   methods: {
-    test(a) {
-      console.log(a)
+    updateVars(e) {
+      this.value = e.target.value;
+
+      this.$emit('update:sync', this.value);
     }
   },
   data() {
     return {
-      value: ''
+      value: '',
+
+      isMobile: window.innerWidth < 900
     }
   }
 }
@@ -58,10 +72,19 @@ export default {
 
 <style lang='scss' scoped>
 input, textarea {
+  transition: all .2s;
   @apply rounded-md bg-gray-200 px-2;
+
+  &:focus {
+    background: rgba(229, 231, 235, 1) !important;
+  }
 
   &.errored {
     @apply bg-red-200;
   }
+}
+
+.auto {
+  width: calc(100% - 100px);
 }
 </style>

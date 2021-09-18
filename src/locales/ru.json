@@ -1,0 +1,17 @@
+{
+  "form.header": "SkyDNS Соглашение",
+
+  "form.first-name": "Имя",
+  "form.last-name": "Фамилия",
+
+  "form.company": "Компания",
+  "form.country": "Страна",
+
+  "form.email": "E-Mail",
+  "form.message": "Комментарий",
+  "form.send": "Отправить",
+
+  "send.form": "Вы неверно заполнили форму",
+  "send.error": "Что-то пошло не так...",
+  "send.ok": "Ваша заявка принята"
+}

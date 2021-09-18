@@ -1,7 +1,18 @@
 <template lang='pug'>
   #app.h-full
+    notifications
     router-view.h-full
 </template>
+
+<script>
+import Notifications from './components/Notifications.vue';
+
+export default {
+  components: {
+    Notifications
+  }
+}
+</script>
 
 <style lang="scss">
 #app {
